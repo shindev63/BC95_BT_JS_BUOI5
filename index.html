@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Tuyển Sinh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-100 flex items-center justify-center min-h-screen p-4">
+
+    <body class="bg-slate-100 flex min-h-screen">
+
+        <div class="w-64 bg-white shadow-xl p-6 space-y-4 border-r border-gray-200">
+            <h3 class="text-xl font-bold text-gray-700 mb-6">Danh sách bài</h3>
+
+            <button onclick="switchTab('tab-bai-1', this)"
+                class="tab-btn w-full flex items-center gap-3 p-3 rounded-lg transition duration-200 bg-blue-600 text-white font-semibold">
+                📒 Bài 1
+            </button>
+
+            <button onclick="switchTab('tab-bai-2', this)"
+                class="tab-btn w-full flex items-center gap-3 p-3 rounded-lg transition duration-200 bg-gray-50 text-gray-600 hover:bg-gray-100">
+                📒 Bài 2
+            </button>
+
+            <button onclick="switchTab('tab-bai-3', this)"
+                class="tab-btn w-full flex items-center gap-3 p-3 rounded-lg transition duration-200 bg-gray-50 text-gray-600 hover:bg-gray-100">
+                📒 Bài 3
+            </button>
+
+            <button onclick="switchTab('tab-bai-4', this)"
+                class="tab-btn w-full flex items-center gap-3 p-3 rounded-lg transition duration-200 bg-gray-50 text-gray-600 hover:bg-gray-100">
+                📒 Bài 4
+            </button>
+        </div>
+
+        <div class="flex-1 p-10">
+
+            <div id="tab-bai-1" class="tab-content block">
+                <div class="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-2xl border-t-8 border-blue-600">
+                    <h2 class="text-3xl font-extrabold text-gray-800 mb-6 flex items-center gap-2">
+                        🏫 Quản lý tuyển sinh
+                    </h2>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-600 mb-1">Điểm chuẩn</label>
+                            <input type="number" id="diemChuan" placeholder="Ví dụ: 25"
+                                class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-400 outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-600 mb-1">Chọn khu vực</label>
+                            <select id="khuVuc"
+                                class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-400 outline-none">
+                                <option value="0">Chọn khu vực</option>
+                                <option value="A">Khu vực A</option>
+                                <option value="B">Khu vực B</option>
+                                <option value="C">Khu vực C</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-600 mb-1">Chọn đối tượng</label>
+                            <select id="doiTuong"
+                                class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-400 outline-none">
+                                <option value="0">Chọn đối tượng</option>
+                                <option value="1">Đối tượng 1</option>
+                                <option value="2">Đối tượng 2</option>
+                                <option value="3">Đối tượng 3</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                        <input type="number" id="diemMon1" placeholder="Điểm môn thứ 1"
+                            class="w-full p-3 border rounded-lg outline-none focus:border-blue-500">
+                        <input type="number" id="diemMon2" placeholder="Điểm môn thứ 2"
+                            class="w-full p-3 border rounded-lg outline-none focus:border-blue-500">
+                        <input type="number" id="diemMon3" placeholder="Điểm môn thứ 3"
+                            class="w-full p-3 border rounded-lg outline-none focus:border-blue-500">
+                    </div>
+
+                    <button id="btnKetQua"
+                        class="w-full md:w-40 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg shadow-lg transition duration-200 uppercase tracking-wider">
+                        Kết Quả
+                    </button>
+
+                    <div id="resultArea" class="mt-8 p-4 bg-green-50 border-l-4 border-green-500 rounded-lg hidden">
+                        <p id="txtKetQua" class="text-lg font-bold text-green-800 italic">👉 Kết quả sẽ hiển thị ở
+                            đây...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-bai-2" class="tab-content hidden">
+                <h2 class="text-2xl font-bold mb-4">Tính tiền điện</h2>
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                        🔋 Tính tiền điện
+                    </h2>
+
+                    <details class="mb-6 bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg">
+                        <summary class="cursor-pointer font-semibold text-blue-700 select-none">
+                            💡 Gợi ý: Mở rộng để xem thêm
+                        </summary>
+                        <p class="mt-2 text-sm text-gray-600 italic">
+                            Cách tính tiền điện tương tự bài tính tiền Grab. Tiền được tính theo từng mốc (lũy
+                            tiến):
+                        </p>
+                        <ul class="text-xs mt-2 list-disc ml-5 text-gray-700">
+                            <li>50kw đầu: 500đ/kw</li>
+                            <li>50kw kế (51-100): 650đ/kw</li>
+                            <li>100kw kế (101-200): 850đ/kw</li>
+                            <li>150kw kế (201-350): 1100đ/kw</li>
+                            <li>Còn lại (>350): 1300đ/kw</li>
+                        </ul>
+                    </details>
+
+                    <div class="flex flex-col md:flex-row gap-4 mb-6">
+                        <input type="text" id="hoTen" placeholder="Nhập họ tên"
+                            class="flex-1 p-3 bg-gray-50 border border-gray-200 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 shadow-inner">
+
+                        <input type="number" id="soKw" placeholder="Nhập số kw"
+                            class="flex-1 p-3 bg-gray-50 border border-gray-200 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 shadow-inner">
+                    </div>
+
+                    <button id="btnTinhTien"
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-10 rounded-full shadow-lg transition duration-300 transform active:scale-95">
+                        Tính tiền điện
+                    </button>
+
+                    <div id="resultTienDien" class="mt-6 p-4 bg-green-100 border border-green-200 rounded-lg hidden">
+                        <span class="text-xl">👉</span>
+                        <span id="txtTienDien" class="text-lg font-medium text-green-800 ml-2"></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="tab-bai-3" class="tab-content hidden">
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-orange-500">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                        💰 Tính thuế thu nhập cá nhân
+                    </h2>
+
+                    <details class="mb-6 bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg">
+                        <summary class="cursor-pointer font-semibold text-yellow-700 select-none">
+                            💡 Gợi ý: Cách tính thuế
+                        </summary>
+                        <div class="mt-2 text-sm text-gray-600 space-y-2">
+                            <p>• <b>Thu nhập chịu thuế</b> = Tổng thu nhập năm - 4tr - Số người phụ thuộc * 1.6tr</p>
+                            <p>• Có thể nhập số lớn theo dạng: 120tr = 120e+6</p>
+                            <p>• Nếu thu nhập chịu thuế ≤ 0 thì không cần đóng thuế.</p>
+                        </div>
+                    </details>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <input type="text" id="hoTenThue" placeholder="Nhập họ tên"
+                            class="p-3 bg-gray-50 border rounded-lg focus:ring-2 focus:ring-orange-400 outline-none">
+
+                        <input type="number" id="thuNhapNam" placeholder="Tổng thu nhập năm"
+                            class="p-3 bg-gray-50 border rounded-lg focus:ring-2 focus:ring-orange-400 outline-none">
+
+                        <input type="number" id="nguoiPhuThuoc" placeholder="Số người phụ thuộc"
+                            class="p-3 bg-gray-50 border rounded-lg focus:ring-2 focus:ring-orange-400 outline-none">
+                    </div>
+
+                    <button id="btnTinhThue"
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-md transition duration-300 active:scale-95">
+                        Tính tiền thuế
+                    </button>
+
+                    <div id="resultThue" class="mt-6 p-4 bg-green-50 border-l-4 border-green-500 rounded-lg hidden">
+                        <p id="txtThue" class="text-lg font-medium text-green-800 italic">👉 Kết quả...</p>
+                    </div>
+                </div>
+            </div>
+            <div id="tab-bai-4" class="tab-content hidden">
+                <div class="bg-white p-8 rounded-2xl shadow-xl border-t-8 border-indigo-600">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+                        🕸️ Tính tiền cáp
+                    </h2>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-600 mb-1">Loại khách hàng</label>
+                            <select id="loaiKhachHang" onchange="handleOnchange()"
+                                class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-indigo-400 outline-none">
+                                <option value="">Chọn loại khách hàng</option>
+                                <option value="user">Nhà dân</option>
+                                <option value="company">Doanh nghiệp</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-600 mb-1">Mã khách hàng</label>
+                            <input type="text" id="maKhachHang" placeholder="Nhập mã KH"
+                                class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-indigo-400 outline-none">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-600 mb-1">Số kênh cao cấp</label>
+                            <input type="number" id="soKenh" placeholder="Nhập số kênh"
+                                class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-indigo-400 outline-none">
+                        </div>
+                    </div>
+
+                    <div id="groupKetNoi" class="mb-6 hidden animate-pulse">
+                        <label class="block text-sm font-semibold text-gray-600 mb-1">Số kết nối (Dành cho Doanh
+                            nghiệp)</label>
+                        <input type="number" id="soKetNoi" placeholder="Nhập số kết nối"
+                            class="w-full md:w-1/3 p-3 border border-indigo-300 rounded-lg focus:ring-2 focus:ring-indigo-400 outline-none">
+                    </div>
+
+                    <button id="btnTinhTienCap"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-10 rounded-lg shadow-lg transition duration-300">
+                        Tính tiền cáp
+                    </button>
+
+                    <div id="resultCap" class="mt-8 p-4 bg-indigo-50 border-l-4 border-indigo-500 rounded-lg hidden">
+                        <p id="txtTienCap" class="text-lg font-bold text-indigo-900 italic">👉 Kết quả...</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </body>
+    <script src="js/swtich.js"></script>
+    <script src="js/bai1.js"></script>
+    <script src="js/bai2.js"></script>
+    <script src="js/bai3.js"></script>
+    <script src="js/bai4.js"></script>
+</body>
+
+</html>
